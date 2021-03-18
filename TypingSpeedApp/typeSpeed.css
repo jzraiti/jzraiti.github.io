@@ -123,9 +123,12 @@ body {
     padding: 2em 2em;
     color: #ffffff;
     background: #429890;
-    text-align: center;
+    /*text-align: center; not sure why this wont inherit  */
 }
 
+.intro p{
+    text-align: center;
+}
 
 .intro p,
 .test-area {
