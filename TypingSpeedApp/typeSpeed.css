@@ -2,6 +2,14 @@
 Typography
 --------------------------------------------------------------*/
 
+body{
+margin: 0;
+padding: 0;
+background: url(jupiterRed.png) no-repeat;
+background-size: cover;
+}
+
+
 body,
 button,
 input,
@@ -171,6 +179,7 @@ body {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
+    color: white;
 }
 
 .timer {

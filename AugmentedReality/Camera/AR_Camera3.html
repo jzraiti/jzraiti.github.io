@@ -4,7 +4,10 @@
 <script src="https://raw.githack.com/jeromeetienne/AR.js/2.0.5/aframe/build/aframe-ar.js"></script>
 <body style='margin : 0px; overflow: scroll;'>
   <a-scene embedded arjs>
-    <a-torus color="#43A367" arc="270" radius="1" radius-tubular="0.1"></a-torus>
+    <a-scene>
+      <!-- Defining the URL inline. Not recommended but more comfortable for web developers. -->
+      <a-image src="jupiterRed.png"></a-image>
+    </a-scene>
     <a-marker-camera preset='hiro'></a-marker-camera>
   </a-scene>
 </body>
