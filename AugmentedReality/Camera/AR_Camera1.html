@@ -3,15 +3,13 @@
 
 <!-- eventually i think itd be cool to implement this  -->
 <!-- https://vasturiano.github.io/aframe-globe-component/examples/airline-routes/ -->
-
-<a-scene>
-  <a-assets>
-    <video id="penguin-sledding" autoplay loop="true" src="penguin-sledding.mp4"></video>
-  </a-assets>
-
-  <!-- Using the asset management system. -->
-  <a-video src="#penguin-sledding" width="16" height="9" position="0 0 -20"></a-video>
-
-  <!-- Defining the URL inline. Not recommended but more comfortable for web developers. -->
-  <a-video src="airbending.mp4"></a-video>
-</a-scene>
+<!doctype HTML>
+<html>
+<script src="https://aframe.io/releases/0.9.2/aframe.min.js"></script>
+<script src="https://raw.githack.com/jeromeetienne/AR.js/2.0.5/aframe/build/aframe-ar.js"></script>
+<body style='margin : 0px; overflow: scroll;'>
+  <a-scene>
+    <a-video src="monkey.mp4"></a-video>
+  </a-scene>
+</body>
+</html>
