@@ -4,20 +4,14 @@
 <!-- eventually i think itd be cool to implement this  -->
 <!-- https://vasturiano.github.io/aframe-globe-component/examples/airline-routes/ -->
 
-<head>
-  <title>My A-Frame Scene</title>
-  <script src="https://aframe.io/releases/0.5.0/aframe.min.js"></script> 
-  <script src="https://unpkg.com/aframe-text-geometry-component@^0.5.0/dist/aframe-text-geometry-component.min.js"></script> 
-</head>
+<a-scene>
+  <a-assets>
+    <video id="penguin-sledding" autoplay loop="true" src="penguin-sledding.mp4"></video>
+  </a-assets>
 
-<body>
-  <a-scene>
-    <a-assets>
-      <a-asset-item id="optimerBoldFont" src="https://rawgit.com/mrdoob/three.js/dev/examples/fonts/optimer_bold.typeface.json"></a-asset-item>
-    </a-assets>
+  <!-- Using the asset management system. -->
+  <a-video src="#penguin-sledding" width="16" height="9" position="0 0 -20"></a-video>
 
-    <a-entity text-geometry="value: What's up"></a-entity>
-    <a-entity text-geometry="value: Dog?; font: #optimerBoldFont"></a-entity>
-    <a-marker-camera preset='hiro'></a-marker-camera>
-  </a-scene>
-</body>
+  <!-- Defining the URL inline. Not recommended but more comfortable for web developers. -->
+  <a-video src="airbending.mp4"></a-video>
+</a-scene>
