@@ -9,6 +9,18 @@ padding: 0;
 background: url(JupiterBandsSide.jpg) no-repeat;
 background-size: cover;
 }
+
+.box{
+  width: 450px;
+  background: rgba(0, 0, 0, 0.4);
+  padding: 20px;
+  text-align: center;
+  margin: auto;
+  margin-top: 3%;
+  color: white;
+  font-family: 'Century Gothic',sans-serif;
+  }
+
 .glitch-embed-wrap{
 
 padding: 40px;
