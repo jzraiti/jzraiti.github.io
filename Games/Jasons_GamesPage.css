@@ -19,6 +19,7 @@ background-size: cover;
 
 /* From <style> */ 
 body {
+  text-align: center;
   font: normal 1.125em/1.5 'Roboto', sans-serif;
 }
   
