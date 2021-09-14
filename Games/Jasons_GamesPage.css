@@ -11,6 +11,7 @@
 /* from original personal page "style.css" */
 
 body{
+text-align: center;
 margin: 0;
 padding: 0;
 background: url(jupiterRed.png) no-repeat;
@@ -19,7 +20,7 @@ background-size: cover;
 
 /* From <style> */ 
 body {
-  text-align: center;
+  /*text-align: center;*/
   font: normal 1.125em/1.5 'Roboto', sans-serif;
 }
   
