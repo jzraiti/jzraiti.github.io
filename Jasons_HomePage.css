@@ -20,10 +20,13 @@ margin-bottom: 5%;
 color: white;
 font-family: 'Century Gothic',sans-serif;
 }
-.box-img{
-border-radius: 50%;
-width: 200px;
-height: 200px;
+.box-img {
+  width: auto; /* Maintain the original width */
+  height: auto; /* Maintain the original height */
+  max-width: 100%; /* Ensure it doesn't exceed the container's width */
+  max-height: 100%; /* Ensure it doesn't exceed the container's height */
+  display: block; /* Prevent inline spacing issues */
+  margin: 0 auto; /* Center the image horizontally if needed */
 }
 .box h1{
 font-size: 40px;

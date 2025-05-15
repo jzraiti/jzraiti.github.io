@@ -1,0 +1,17 @@
+Move all background pics to same folder and remake dynamic backgrounds thing
+
+Take topbar and break it out into a seperate item so that it is consistant throughout
+
+Fix formatting on published research
+
+Can make an old projects tab that includes augmented reality etc
+
+Annotated papers? This is a good idea but what do I actually want here. Maybe papers I am reading? Summaries of them as best I understand.
+
+Add mycoweekly
+
+Add bat_gogh and portobello_picasso
+
+Add Current Research page - spore shape etc, is there a published page about this? Maybe link to pringle lab website somehow
+
+Port over to Vite + React + Tailwind CSS
