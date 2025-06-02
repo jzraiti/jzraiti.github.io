@@ -1,0 +1,54 @@
+<script src="https://cdn.tailwindcss.com"></script>
+
+<div class="pt-10 px-10">
+  <button id="openMenu" class="p-8 rounded-full bg-blue-600 text-white hover:bg-blue-700 focus:outline-none">
+      <!-- Hamburger Icon -->
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2"
+          viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M4 6h16M4 12h16M4 18h16"/>
+      </svg>
+  </button>
+</div>
+
+<!-- Menu Panel (Hidden by default) -->
+<div id="menuPanel" class="fixed top-0 left-0 w-full h-full bg-white bg-opacity-95 flex flex-col items-center justify-center space-y-6 text-xl hidden z-50">
+  <button id="closeMenu" class="absolute top-4 right-4 text-6xl font-bold text-gray-600 hover:text-red-500 focus:outline-none">
+    &times;
+  </button>
+  <a href="/index.html" class="hover:text-blue-600">Home</a>
+  <a href="/About_Me/index.html" class="hover:text-blue-600">About Me</a>
+  <a href="/CV/index.html" class="hover:text-blue-600">CV</a>
+  <a href="/Published_Research/index.html" class="hover:text-blue-600">Research</a>
+  
+  <!-- Personal Projects Dropdown -->
+  <div class="relative">
+    <button id="projectsDropdown" class="hover:text-blue-600 focus:outline-none">Personal Projects</button>
+    <div id="projectsMenu" class="absolute left-0 mt-2 w-48 bg-white shadow-lg rounded-lg hidden">
+      <a href="https://www.mycoweekly.org/" class="block px-4 py-2 hover:bg-blue-100 hover:text-blue-600">Mycoweekly</a>
+      <a href="/Personal_Projects/Games/index.html" class="block px-4 py-2 hover:bg-blue-100 hover:text-blue-600">Bat's Life</a>
+      <a href="/Personal_Projects/Augmented_Reality/index.html" class="block px-4 py-2 hover:bg-blue-100 hover:text-blue-600">Augmented Reality</a>
+    </div>
+  </div>
+</div>
+
+<script>
+const openBtn = document.getElementById('openMenu');
+const closeBtn = document.getElementById('closeMenu');
+const panel = document.getElementById('menuPanel');
+const projectsDropdown = document.getElementById('projectsDropdown');
+const projectsMenu = document.getElementById('projectsMenu');
+
+// Open/close main menu
+openBtn.addEventListener('click', () => {
+  panel.classList.remove('hidden');
+});
+
+closeBtn.addEventListener('click', () => {
+  panel.classList.add('hidden');
+});
+
+// Toggle Personal Projects dropdown
+projectsDropdown.addEventListener('click', () => {
+  projectsMenu.classList.toggle('hidden');
+});
+</script>

@@ -68,7 +68,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const randomImage = getRandomImage(selectedImages);
 
     body.style.backgroundImage = `url(${randomImage})`;
-    body.style.backgroundSize = 'cover';
+    body.style.backgroundSize = 'Cover';
     body.style.backgroundPosition = 'center';
     body.style.backgroundRepeat = 'no-repeat';
 });

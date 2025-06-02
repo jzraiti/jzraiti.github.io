@@ -4,44 +4,69 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Jason Raiti - Personal Website</title>
-    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-    <link rel="stylesheet" href="Jasons_HomePage.css">
-    <script src="https://use.fontawesome.com/d1341f9b7a.js"></script> 
+    <script src="https://cdn.tailwindcss.com"></script>
     <script src="Components/randombackground.js"></script> <!-- Random background script -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"> <!-- Font Awesome -->
   </head>
 
-  <body>
-    <!-- Main content -->
-    <div class="box">
-      <!-- Portrait Image -->
-      <img src="/Assets/Images/Closeup_Transparent.png" alt="Jason Raiti" class="box-img">
+  <body class="m-0 p-0 bg-cover bg-center bg-no-repeat">
+    <!-- Header -->
+    <div id="header-placeholder"></div>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        fetch("/Components/header.html")
+          .then(response => response.text())
+          .then(data => {
+            const headerPlaceholder = document.getElementById("header-placeholder");
+            headerPlaceholder.innerHTML = data;
+    
+            // Manually execute the JavaScript for the menu functionality
+            const openBtn = document.getElementById('openMenu');
+            const closeBtn = document.getElementById('closeMenu');
+            const panel = document.getElementById('menuPanel');
+            const projectsDropdown = document.getElementById('projectsDropdown');
+            const projectsMenu = document.getElementById('projectsMenu');
+    
+            // Open/close main menu
+            openBtn.addEventListener('click', () => {
+              panel.classList.remove('hidden');
+            });
+    
+            closeBtn.addEventListener('click', () => {
+              panel.classList.add('hidden');
+            });
+    
+            // Toggle Personal Projects dropdown
+            projectsDropdown.addEventListener('click', () => {
+              projectsMenu.classList.toggle('hidden');
+            });
+          })
+          .catch(error => console.error("Error loading header:", error));
+      });
+    </script>
 
-      <div class="content-container">
+    <!-- Main content -->
+    <div class="max-w-2xl bg-black bg-opacity-40 p-8 sm:p-12 text-center mx-auto mt-10 sm:mt-20 mb-10 sm:mb-20 text-white font-sans min-h-[800px]">
+      <img src="/Assets/Images/Closeup_Transparent.png" alt="Jason Raiti" class="w-64 h-64 rounded-full object-cover mx-auto">
+      <h1 class="text-4xl sm:text-5xl tracking-wide mt-6">Jason Raiti</h1>
+            
+      <div class="flex flex-wrap justify-between gap-10 mt-5">
         <!-- Left side: Personal details -->
-        <div class="personal-details">
-          <h5>Mycologist</h5>
-          <h5>Pringle Lab</h5>
-          <h5>UW Madison</h5>
-          <h5>raiti@wisc.edu</h5>
+        <div class="flex-1 max-w-[45%] text-left flex flex-col justify-center items-center  space-y-10">
+          <h5 class="text-2xl tracking-wide font-light">Mycologist</h5>
+          <h5 class="text-2xl tracking-wide font-light">Pringle Lab</h5>
+          <h5 class="text-2xl tracking-wide font-light">UW Madison</h5>
+          <h5 class="text-2xl tracking-wide font-light">raiti@wisc.edu</h5>
         </div>
       
         <!-- Right side: iNaturalist observations -->
-        <div class="inat-observations">
-          <div id="fungi-observations" class="inaturalist-container">
-            <ul id="observations-list"></ul>
+        <div class="flex-1 max-w-[45%]">
+          <div id="fungi-observations" class="space-y-5 overflow-y-auto h-[300px]">
+              <ul id="observations-list" class="list-none"></ul>
           </div>
         </div>
       </div>
-      
-      <!-- Bottom: Social media links -->
-      <ul class="social-media-links">
-        <li>
-          <a href="https://www.linkedin.com/in/jason-raiti" class="fa fa-linkedin-square fa-2x social-media" id="linkedin"></a>
-        </li>
-        <li>
-          <a href="https://github.com/jzraiti" class="fa fa-github fa-2x social-media" id="github"></a>
-        </li>
-      </ul>
+
     <script>
       const apiUrl = `https://api.inaturalist.org/v1/observations?taxon_id=47170&per_page=50&order_by=random&random_seed=${Math.random()}`;
 
@@ -55,16 +80,15 @@
             .filter(observation => observation.species_guess) // Exclude observations without a species_guess
             .forEach(observation => {
               const listItem = document.createElement("li");
-              listItem.className = "observation-slide"; // Add a class for styling and control
-              listItem.style.display = "none"; // Initially hide all slides
+              listItem.className = "hidden"; // Initially hide all slides
               listItem.innerHTML = `
-                <a href="${observation.uri}" target="_blank">
-                  <div class="image-container">
-                    <img src="${observation.photos[0]?.url.replace('square', 'large') || ''}" alt="${observation.taxon.name}">
+                <a href="${observation.uri}" target="_blank" class="block">
+                  <div class="w-60 h-48 overflow-hidden flex justify-center items-center mx-auto pt-5">
+                      <img src="${observation.photos[0]?.url.replace('square', 'large') || ''}" alt="${observation.taxon.name}" class="w-full h-full object-cover">
                   </div>
-                  <div class="text-container">
-                    <p class="common-name">${observation.species_guess}</p>
-                    <p class="scientific-name"><em>${observation.taxon.name}</em></p>
+                  <div class="w-60 h-24 flex flex-col justify-center items-center rounded-lg mx-auto">
+                    <p class="text-lg text-white truncate">${observation.species_guess}</p>
+                    <p class="text-sm italic text-white truncate"><em>${observation.taxon.name}</em></p>
                   </div>
                 </a>
               `;
@@ -73,15 +97,15 @@
 
           // Slideshow logic
           let currentIndex = 0;
-          const slides = document.getElementsByClassName("observation-slide");
+          const slides = document.getElementsByTagName("li");
 
           function showSlide(index) {
             // Hide all slides
             for (let i = 0; i < slides.length; i++) {
-              slides[i].style.display = "none";
+              slides[i].classList.add("hidden");
             }
             // Show the current slide
-            slides[index].style.display = "block";
+            slides[index].classList.remove("hidden");
           }
 
           function startSlideshow() {
@@ -90,7 +114,7 @@
             setInterval(() => {
               showSlide(currentIndex); // Show the current slide
               currentIndex = (currentIndex + 1) % slides.length; // Move to the next slide
-            }, 7000); // Change slide every 7 seconds
+            }, 10000); // Change slide every 7 seconds
           }
 
           if (slides.length > 0) {
@@ -98,6 +122,19 @@
           }
         })
         .catch(error => console.error("Error fetching iNaturalist data:", error));
+    </script>
+
+    <!-- Footer -->
+    <div id="footer-placeholder"></div>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        fetch("/Components/footer.html")
+          .then(response => response.text())
+          .then(data => {
+            document.getElementById("footer-placeholder").innerHTML = data;
+          })
+          .catch(error => console.error("Error loading footer:", error));
+      });
     </script>
   </body>
 </html>

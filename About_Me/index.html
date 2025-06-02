@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Jason Raiti - Personal Website</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="/Components/randombackground.js"></script> <!-- Random background script -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"> <!-- Font Awesome -->
+  </head>
+
+  <body class="m-0 p-0 bg-cover bg-center bg-no-repeat">
+    <!-- Header -->
+    <div id="header-placeholder"></div>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        fetch("/Components/header.html")
+          .then(response => response.text())
+          .then(data => {
+            const headerPlaceholder = document.getElementById("header-placeholder");
+            headerPlaceholder.innerHTML = data;
+    
+            // Manually execute the JavaScript for the menu functionality
+            const openBtn = document.getElementById('openMenu');
+            const closeBtn = document.getElementById('closeMenu');
+            const panel = document.getElementById('menuPanel');
+            const projectsDropdown = document.getElementById('projectsDropdown');
+            const projectsMenu = document.getElementById('projectsMenu');
+    
+            // Open/close main menu
+            openBtn.addEventListener('click', () => {
+              panel.classList.remove('hidden');
+            });
+    
+            closeBtn.addEventListener('click', () => {
+              panel.classList.add('hidden');
+            });
+    
+            // Toggle Personal Projects dropdown
+            projectsDropdown.addEventListener('click', () => {
+              projectsMenu.classList.toggle('hidden');
+            });
+          })
+          .catch(error => console.error("Error loading header:", error));
+      });
+    </script>
+
+    <!-- Main content -->
+    <div class="max-w-3xl mx-auto px-4 py-12 text-white bg-black/60 backdrop-blur rounded-xl shadow-lg">
+        <h1 class="text-4xl font-bold mb-4">About Me</h1>
+        <p class="text-lg leading-relaxed mb-4">
+          Hello! I’m Jason Raiti—a mycologist, educator, and creative technologist. I’m currently pursuing a graduate degree in Botany at the University of Wisconsin–Madison, where I study the evolutionary morphology of <em>Amanita</em> spores in the Pringle Lab. My research integrates ecology, phylogenetics, and computational analysis, with a strong focus on science communication and fungal conservation.
+        </p>
+        <p class="text-lg leading-relaxed mb-4">
+          Prior to joining UW–Madison, I served as a board member of the Central Texas Mycological Society, where I led hands-on workshops in low-tech mushroom cultivation and wild-to-agar cloning. My work has included cultivating bioluminescent fungi in Brazil, co-authoring a paper on robotic water sampling for IROS, and contributing to NASA-affiliated robotics projects, including an autonomous lunar rover.
+        </p>
+        <p class="text-lg leading-relaxed mb-4">
+          I am also passionate about teaching, interdisciplinary collaboration, and finding unexpected intersections between science, technology, and creativity. From developing conservation-themed mobile games to generating mushroom-inspired AI art and poetry, I aim to foster curiosity and accessible engagement with the natural world.
+        </p>
+        <p class="text-lg leading-relaxed">
+          If you're interested in fungi, research collaboration, or creative projects at the intersection of science and storytelling, feel free to <a href="mailto:raiti@wisc.edu" class="underline text-blue-300 hover:text-blue-200">get in touch</a>.
+        </p>
+    </div>
+
+    <!-- Footer -->
+    <div id="footer-placeholder"></div>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        fetch("/Components/footer.html")
+          .then(response => response.text())
+          .then(data => {
+            document.getElementById("footer-placeholder").innerHTML = data;
+          })
+          .catch(error => console.error("Error loading footer:", error));
+      });
+    </script>
+  </body>
+</html>
