@@ -21,12 +21,12 @@ color: white;
 font-family: 'Century Gothic',sans-serif;
 }
 .box-img {
-  width: auto; /* Maintain the original width */
-  height: auto; /* Maintain the original height */
-  max-width: 100%; /* Ensure it doesn't exceed the container's width */
-  max-height: 100%; /* Ensure it doesn't exceed the container's height */
+  width: 250px; /* Set a fixed width */
+  height: 250px; /* Set a fixed height */
+  border-radius: 50%; /* Make the image circular */
+  object-fit: cover; /* Ensure the image fits within the circle without stretching */
   display: block; /* Prevent inline spacing issues */
-  margin: 0 auto; /* Center the image horizontally if needed */
+  margin: 0 auto; /* Center the image horizontally */
 }
 .box h1{
 font-size: 40px;
