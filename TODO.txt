@@ -16,20 +16,17 @@ Add Current Research page - spore shape etc, is there a published page about thi
 
 Port over to Tailwind CSS
 
+    <section>
+      <nav class="jmenu">
+        <ul>
+          <li><a href="https://jzraiti.github.io/">Home</a></li>
+        </ul>
+      </nav>
+    </section>
 
-    <!-- Navbar Placeholder -->
-    <div id="navbar-placeholder"></div>
-    <script>
-      // Dynamically load the navbar component
-      document.addEventListener("DOMContentLoaded", function () {
-        fetch("Components/navbar.html")
-          .then(response => response.text())
-          .then(data => {
-            document.getElementById("navbar-placeholder").innerHTML = data;
-          })
-          .catch(error => console.error("Error loading navbar:", error));
-      });
-    </script>
-
-
-Ok. I want to modernize the code I have to utilize the maximum benefits of tailwind CSS. 
+    <section class="Game1">
+      <a href="https://apps.apple.com/us/app/bats-life/id1584580569?itscg=30200&itsct=apps_box_artwork&mttnsubad=1584580569" style="width: 170px; height: 170px; border-radius: 6px; overflow: hidden; display: inline-block; vertical-align: middle;">
+        <img src="https://is1-ssl.mzstatic.com/image/thumb/Purple116/v4/1c/bf/a3/1cbfa3c1-d689-7f72-9853-0b990844aa63/AppIcon-1x_U007emarketing-0-7-0-85-220.png/540x540bb.jpg" alt="Bat's Life" style="width: 170px; height: 170px; border-radius: 6px; overflow: hidden; display: inline-block; vertical-align: middle;" />
+      </a>
+      <p> The app store version of Bat's Life. Download it on iphone! </p>
+    </section>

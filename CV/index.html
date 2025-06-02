@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Jason Raiti - Personal Website</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="/Components/randombackground.js"></script> <!-- Random background script -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"> <!-- Font Awesome -->
+  </head>
+
+  <body class="m-0 p-0 bg-cover bg-center bg-no-repeat">
+    <!-- Header -->
+    <div id="header-placeholder"></div>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        fetch("/Components/header.html")
+          .then(response => response.text())
+          .then(data => {
+            const headerPlaceholder = document.getElementById("header-placeholder");
+            headerPlaceholder.innerHTML = data;
+    
+            // Manually execute the JavaScript for the menu functionality
+            const openBtn = document.getElementById('openMenu');
+            const closeBtn = document.getElementById('closeMenu');
+            const panel = document.getElementById('menuPanel');
+            const projectsDropdown = document.getElementById('projectsDropdown');
+            const projectsMenu = document.getElementById('projectsMenu');
+    
+            // Open/close main menu
+            openBtn.addEventListener('click', () => {
+              panel.classList.remove('hidden');
+            });
+    
+            closeBtn.addEventListener('click', () => {
+              panel.classList.add('hidden');
+            });
+    
+            // Toggle Personal Projects dropdown
+            projectsDropdown.addEventListener('click', () => {
+              projectsMenu.classList.toggle('hidden');
+            });
+          })
+          .catch(error => console.error("Error loading header:", error));
+      });
+    </script>
+
+    <!-- Main content -->
+    <div class="max-w-2xl bg-black bg-opacity-40 p-8 sm:p-12 text-center mx-auto mt-10 sm:mt-20 mb-10 sm:mb-20 text-white font-sans">
+        <h1 class="text-4xl sm:text-5xl tracking-wide mb-6">Curriculum Vitae</h1>
+        
+        <!-- Embedded Google Document -->
+        <iframe 
+        src="https://docs.google.com/document/d/1HcUN7ItyJndrlNowDEdvLtQqsMrxEarL/preview" 
+        width="100%" 
+        height="600" 
+        class="border-0 rounded-lg">
+        </iframe>
+
+    </div>
+    
+    <!-- Footer -->
+    <div id="footer-placeholder"></div>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        fetch("/Components/footer.html")
+          .then(response => response.text())
+          .then(data => {
+            document.getElementById("footer-placeholder").innerHTML = data;
+          })
+          .catch(error => console.error("Error loading footer:", error));
+      });
+    </script>
+  </body>
+</html>

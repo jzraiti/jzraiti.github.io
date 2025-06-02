@@ -1,30 +1,69 @@
 <!doctype html>
-<html>
+<html lang="en">
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Games Made By Jason Raiti</title>
-    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-    <link rel="stylesheet" href="Jasons_GamesPage.css">
-    <!-- <p> Head elements from old personal website </p> -->
-    <script src="https://use.fontawesome.com/d1341f9b7a.js"></script>
+    <title>Jason Raiti - Personal Website</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="/Components/randombackground.js"></script> <!-- Random background script -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"> <!-- Font Awesome -->
   </head>
 
-  <body>
-    <section>
-      <nav class="jmenu">
-        <ul>
-          <li><a href="https://jzraiti.github.io/">Home</a></li>
-        </ul>
-      </nav>
-    </section>
+  <body class="m-0 p-0 bg-cover bg-center bg-no-repeat">
+    <!-- Header -->
+    <div id="header-placeholder"></div>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        fetch("/Components/header.html")
+          .then(response => response.text())
+          .then(data => {
+            const headerPlaceholder = document.getElementById("header-placeholder");
+            headerPlaceholder.innerHTML = data;
+    
+            // Manually execute the JavaScript for the menu functionality
+            const openBtn = document.getElementById('openMenu');
+            const closeBtn = document.getElementById('closeMenu');
+            const panel = document.getElementById('menuPanel');
+            const projectsDropdown = document.getElementById('projectsDropdown');
+            const projectsMenu = document.getElementById('projectsMenu');
+    
+            // Open/close main menu
+            openBtn.addEventListener('click', () => {
+              panel.classList.remove('hidden');
+            });
+    
+            closeBtn.addEventListener('click', () => {
+              panel.classList.add('hidden');
+            });
+    
+            // Toggle Personal Projects dropdown
+            projectsDropdown.addEventListener('click', () => {
+              projectsMenu.classList.toggle('hidden');
+            });
+          })
+          .catch(error => console.error("Error loading header:", error));
+      });
+    </script>
 
-    <section class="Game1">
-      <a href="https://apps.apple.com/us/app/bats-life/id1584580569?itscg=30200&itsct=apps_box_artwork&mttnsubad=1584580569" style="width: 170px; height: 170px; border-radius: 6px; overflow: hidden; display: inline-block; vertical-align: middle;">
-        <img src="https://is1-ssl.mzstatic.com/image/thumb/Purple116/v4/1c/bf/a3/1cbfa3c1-d689-7f72-9853-0b990844aa63/AppIcon-1x_U007emarketing-0-7-0-85-220.png/540x540bb.jpg" alt="Bat's Life" style="width: 170px; height: 170px; border-radius: 6px; overflow: hidden; display: inline-block; vertical-align: middle;" />
+    <!-- Main content -->
+    <section class="bg-gray-800 bg-opacity-90 text-white py-10 p-6 rounded-lg shadow-lg max-w-md mx-auto text-center">
+      <a href="https://apps.apple.com/us/app/bats-life/id1584580569?itscg=30200&itsct=apps_box_artwork&mttnsubad=1584580569" target="_blank" class="inline-block">
+        <img src="https://is1-ssl.mzstatic.com/image/thumb/Purple116/v4/1c/bf/a3/1cbfa3c1-d689-7f72-9853-0b990844aa63/AppIcon-1x_U007emarketing-0-7-0-85-220.png/540x540bb.jpg" alt="Bat's Life" class="w-40 h-40 rounded-lg mx-auto shadow-md hover:shadow-lg transition-shadow duration-300">
       </a>
-      <p> The app store version of Bat's Life. Download it on iphone! </p>
+      <p class="mt-4 text-lg font-light">The App Store version of <strong>Bat's Life</strong>. Download it on iPhone!</p>
     </section>
 
+    <!-- Footer -->
+    <div id="footer-placeholder"></div>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        fetch("/Components/footer.html")
+          .then(response => response.text())
+          .then(data => {
+            document.getElementById("footer-placeholder").innerHTML = data;
+          })
+          .catch(error => console.error("Error loading footer:", error));
+      });
+    </script>
   </body>
 </html>
