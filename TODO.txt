@@ -14,4 +14,22 @@ Add bat_gogh and portobello_picasso
 
 Add Current Research page - spore shape etc, is there a published page about this? Maybe link to pringle lab website somehow
 
-Port over to Vite + React + Tailwind CSS
+Port over to Tailwind CSS
+
+
+    <!-- Navbar Placeholder -->
+    <div id="navbar-placeholder"></div>
+    <script>
+      // Dynamically load the navbar component
+      document.addEventListener("DOMContentLoaded", function () {
+        fetch("Components/navbar.html")
+          .then(response => response.text())
+          .then(data => {
+            document.getElementById("navbar-placeholder").innerHTML = data;
+          })
+          .catch(error => console.error("Error loading navbar:", error));
+      });
+    </script>
+
+
+Ok. I want to modernize the code I have to utilize the maximum benefits of tailwind CSS. 
