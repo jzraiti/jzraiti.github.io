@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Jason Raiti - Personal Website</title>
+    <title>Jason Raiti - Published Research</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="/Components/randombackground.js"></script> <!-- Random background script -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"> <!-- Font Awesome -->
@@ -19,23 +19,23 @@
           .then(data => {
             const headerPlaceholder = document.getElementById("header-placeholder");
             headerPlaceholder.innerHTML = data;
-    
+
             // Manually execute the JavaScript for the menu functionality
             const openBtn = document.getElementById('openMenu');
             const closeBtn = document.getElementById('closeMenu');
             const panel = document.getElementById('menuPanel');
             const projectsDropdown = document.getElementById('projectsDropdown');
             const projectsMenu = document.getElementById('projectsMenu');
-    
+
             // Open/close main menu
             openBtn.addEventListener('click', () => {
               panel.classList.remove('hidden');
             });
-    
+
             closeBtn.addEventListener('click', () => {
               panel.classList.add('hidden');
             });
-    
+
             // Toggle Personal Projects dropdown
             projectsDropdown.addEventListener('click', () => {
               projectsMenu.classList.toggle('hidden');
@@ -44,34 +44,53 @@
           .catch(error => console.error("Error loading header:", error));
       });
     </script>
-    
-  <!-- Main content -->
-  <div class="max-w-4xl mx-auto bg-black bg-opacity-40 p-8 sm:p-12 text-center mt-10 sm:mt-20 mb-10 sm:mb-20 text-white font-sans rounded-lg">
-    <h1 class="text-4xl sm:text-5xl tracking-wide mb-6">Published Research</h1>
-    <p class="text-lg mb-6">Below are some of my published research papers. Click the links to download or view them.</p>
-    
-    <!-- Research Paper 1 -->
-    <div class="mb-10">
-      <h2 class="text-2xl font-semibold mb-4">Confined Water Body Coverage under Resource Constraints</h2>
-      <object data="/Published_Research/Research_PDFs/Confined_Water_Body_Coverage_under_Resource_Constraints.pdf" type="application/pdf" class="w-full h-[750px] rounded-lg border-2 border-gray-300">
-        <embed src="/Published_Research/Research_PDFs/Confined_Water_Body_Coverage_under_Resource_Constraints.pdf" type="application/pdf">
-        <p class="text-sm text-gray-300">This browser does not support PDFs. Please download the PDF to view it: 
-          <a href="https://jzraiti.github.io/PublishedResearch/ResearchPDFs/Confined_Water_Body_Coverage_under_Resource_Constraints.pdf" class="text-blue-500 hover:text-blue-700 underline">Download PDF</a>.
-        </p>
-      </object>
-    </div>
 
-    <!-- Research Paper 2 -->
-    <div class="mb-10">
-      <h2 class="text-2xl font-semibold mb-4">Utilizing Geometric Morphometrics to Characterize Head Shape Variation in the Brazilian Lance-head Viper (Bothrops moojeni)</h2>
-      <object data="/Published_Research/Research_PDFs/Raiti_etal.pdf" type="application/pdf" class="w-full h-[750px] rounded-lg border-2 border-gray-300">
-        <embed src="/Published_Research/Research_PDFs/Raiti_etal.pdf" type="application/pdf">
-        <p class="text-sm text-gray-300">This browser does not support PDFs. Please download the PDF to view it: 
-          <a href="https://jzraiti.github.io/PublishedResearch/ResearchPDFs/Raiti_etal.pdf" class="text-blue-500 hover:text-blue-700 underline">Download PDF</a>.
-        </p>
-      </object>
+    <!-- Main content -->
+    <div class="max-w-6xl mx-auto p-8 sm:p-12 text-white font-sans">
+      <!-- Current Research -->
+      <section class="mb-16">
+        <h1 class="text-4xl sm:text-5xl font-bold tracking-wide mb-6 text-center">Current Research</h1>
+        <div class="bg-gray-800 bg-opacity-60 p-6 rounded-lg shadow-lg">
+          <h2 class="text-2xl font-semibold mb-4">Spore Shape and Ecological Niche in <em>Amanita</em></h2>
+          <p class="text-lg leading-relaxed mb-4">
+            One of the central challenges in studying fungi is figuring out what ecological roles different species play. With millions of species still undescribed, it’s often impossible to rely on traditional natural history alone. That’s why I’m especially interested in how physical traits—like the size and shape of spores—can give us clues about how fungi live, move, and interact with the world.
+          </p>
+          <p class="text-lg leading-relaxed mb-4">
+            My current research focuses on the genus <em>Amanita</em>, a group that includes both decomposers and ectomycorrhizal species and spans an incredible diversity of spore shapes. Some spores are almost perfectly round; others are long and narrow. I’m investigating whether those shapes are just evolutionary accidents—or if they actually tell us something meaningful about how different species disperse or what niches they occupy.
+          </p>
+          <p class="text-lg leading-relaxed mb-4">
+            To answer this, I’m combining morphometric analysis with phylogenetic modeling across a dataset of over 200 <em>Amanita</em> species. I’m testing whether spore shape patterns align with ecological strategies like symbiosis or saprotrophy, and whether closely related species tend to share similar spore traits. The hope is to uncover broader principles that link morphology to ecological function in fungi—principles that could help us understand fungal diversity at scale.
+          </p>
+          <p class="text-lg leading-relaxed">
+            This project is ongoing, and I'm excited to share more as it develops. It's part of a broader effort to make sense of fungal form and function in an era of big data and rapid discovery.
+          </p>
+        </div>
+      </section>
+
+      <!-- Previous Research -->
+      <section>
+        <h1 class="text-4xl sm:text-5xl font-bold tracking-wide mb-6 text-center">Previous Research</h1>
+        <div class="mb-10">
+          <h2 class="text-2xl font-semibold mb-4">Confined Water Body Coverage under Resource Constraints</h2>
+          <object data="/Published_Research/Research_PDFs/Confined_Water_Body_Coverage_under_Resource_Constraints.pdf" type="application/pdf" class="w-full h-[750px] rounded-lg border-2 border-gray-300 shadow-lg">
+            <embed src="/Published_Research/Research_PDFs/Confined_Water_Body_Coverage_under_Resource_Constraints.pdf" type="application/pdf">
+            <p class="text-sm text-gray-300">This browser does not support PDFs. Please download the PDF to view it: 
+              <a href="https://jzraiti.github.io/PublishedResearch/ResearchPDFs/Confined_Water_Body_Coverage_under_Resource_Constraints.pdf" class="text-blue-500 hover:text-blue-700 underline">Download PDF</a>.
+            </p>
+          </object>
+        </div>
+
+        <div class="mb-10">
+          <h2 class="text-2xl font-semibold mb-4">Utilizing Geometric Morphometrics to Characterize Head Shape Variation in the Brazilian Lance-head Viper (<em>Bothrops moojeni</em>)</h2>
+          <object data="/Published_Research/Research_PDFs/Raiti_etal.pdf" type="application/pdf" class="w-full h-[750px] rounded-lg border-2 border-gray-300 shadow-lg">
+            <embed src="/Published_Research/Research_PDFs/Raiti_etal.pdf" type="application/pdf">
+            <p class="text-sm text-gray-300">This browser does not support PDFs. Please download the PDF to view it: 
+              <a href="https://jzraiti.github.io/PublishedResearch/ResearchPDFs/Raiti_etal.pdf" class="text-blue-500 hover:text-blue-700 underline">Download PDF</a>.
+            </p>
+          </object>
+        </div>
+      </section>
     </div>
-  </div>
 
     <!-- Footer -->
     <div id="footer-placeholder"></div>
