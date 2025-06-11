@@ -10,6 +10,7 @@
     <title>Jason Raiti - Personal Website</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="/Components/randombackground.js"></script> <!-- Random background script -->
+    <script type="module" src="/Components/inat-observations.js"></script> <!-- iNaturalist observations script -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"> <!-- Font Awesome -->
   </head>
 
@@ -65,68 +66,9 @@
       
         <!-- Right side: iNaturalist observations -->
         <div class="flex-1 max-w-[45%]">
-          <div id="fungi-observations" class="space-y-5 overflow-y-auto h-[300px]">
-              <ul id="observations-list" class="list-none"></ul>
-          </div>
+          <inat-observations taxon-id="47170" per-page="50" interval="10000"></inat-observations>
         </div>
       </div>
-
-    <script>
-      const apiUrl = `https://api.inaturalist.org/v1/observations?taxon_id=47170&per_page=50&order_by=random&random_seed=${Math.random()}`;
-
-      fetch(apiUrl)
-        .then(response => response.json())
-        .then(data => {
-          const observationsList = document.getElementById("observations-list");
-
-          // Create a slide for each observation, excluding "Unknown Species"
-          data.results
-            .filter(observation => observation.species_guess) // Exclude observations without a species_guess
-            .forEach(observation => {
-              const listItem = document.createElement("li");
-              listItem.className = "hidden"; // Initially hide all slides
-              listItem.innerHTML = `
-                <a href="${observation.uri}" target="_blank" class="block">
-                  <div class="w-60 h-48 overflow-hidden flex justify-center items-center mx-auto pt-5">
-                      <img src="${observation.photos[0]?.url.replace('square', 'large') || ''}" alt="${observation.taxon.name}" class="w-full h-full object-cover">
-                  </div>
-                  <div class="w-60 h-24 flex flex-col justify-center items-center rounded-lg mx-auto">
-                    <p class="text-lg text-white truncate">${observation.species_guess}</p>
-                    <p class="text-sm italic text-white truncate"><em>${observation.taxon.name}</em></p>
-                  </div>
-                </a>
-              `;
-              observationsList.appendChild(listItem);
-            });
-
-          // Slideshow logic
-          let currentIndex = 0;
-          const slides = document.getElementsByTagName("li");
-
-          function showSlide(index) {
-            // Hide all slides
-            for (let i = 0; i < slides.length; i++) {
-              slides[i].classList.add("hidden");
-            }
-            // Show the current slide
-            slides[index].classList.remove("hidden");
-          }
-
-          function startSlideshow() {
-            showSlide(currentIndex); // Show the current slide
-            currentIndex = (currentIndex + 1) % slides.length; // Move to the next slide
-            setInterval(() => {
-              showSlide(currentIndex); // Show the current slide
-              currentIndex = (currentIndex + 1) % slides.length; // Move to the next slide
-            }, 10000); // Change slide every 7 seconds
-          }
-
-          if (slides.length > 0) {
-            startSlideshow(); // Start the slideshow if there are slides
-          }
-        })
-        .catch(error => console.error("Error fetching iNaturalist data:", error));
-    </script>
 
     <!-- Footer -->
     <div id="footer-placeholder"></div>
