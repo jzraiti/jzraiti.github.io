@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <link rel="apple-touch-icon" sizes="180x180" href="/Assets/Images/Logos/favicon_io/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/Assets/Images/Logos/favicon_io/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/Assets/Images/Logos/favicon_io/favicon-16x16.png" />
+    <link rel="manifest" href="/Assets/Images/Logos/favicon_io/site.webmanifest" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Jason Raiti - Personal Website</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="/Components/randombackground.js"></script> <!-- Random background script -->
+    <script type="module" src="/Components/inat-observations.js"></script> <!-- iNaturalist observations script -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"> <!-- Font Awesome -->
+  </head>
+
+  <body class="m-0 p-0 bg-cover bg-center bg-no-repeat">
+    <!-- Header -->
+    <div id="header-placeholder"></div>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        fetch("/Components/header.html")
+          .then(response => response.text())
+          .then(data => {
+            const headerPlaceholder = document.getElementById("header-placeholder");
+            headerPlaceholder.innerHTML = data;
+    
+            // Manually execute the JavaScript for the menu functionality
+            const openBtn = document.getElementById('openMenu');
+            const closeBtn = document.getElementById('closeMenu');
+            const panel = document.getElementById('menuPanel');
+            const projectsDropdown = document.getElementById('projectsDropdown');
+            const projectsMenu = document.getElementById('projectsMenu');
+    
+            // Open/close main menu
+            openBtn.addEventListener('click', () => {
+              panel.classList.remove('hidden');
+            });
+    
+            closeBtn.addEventListener('click', () => {
+              panel.classList.add('hidden');
+            });
+    
+            // Toggle Personal Projects dropdown
+            projectsDropdown.addEventListener('click', () => {
+              projectsMenu.classList.toggle('hidden');
+            });
+          })
+          .catch(error => console.error("Error loading header:", error));
+      });
+    </script>
+
+    <!-- Main content -->
+    <main class="max-w-4xl mx-auto p-6 bg-gray-900 bg-opacity-70 text-white rounded-lg">
+      <h1 class="text-3xl font-bold mb-4">Amanita phalloides</h1>
+
+      <figure class="mb-6">
+        <img src="./amanita_phalloides.png" alt="Amanita phalloides" class="w-full h-auto rounded-md border border-gray-700">
+        <figcaption class="text-sm text-gray-300 mt-2">Amanita phalloides (death cap)</figcaption>
+      </figure>
+
+      <section class="mb-6">
+        <p>Este póster está disponible para que cualquiera lo use. Está pensado para prevenir envenenamientos por hongos y puede divulgarse libremente en lugares públicos.</p>
+        <p class="mt-2">This poster is available for anyone to use. It is intended to prevent mushroom poisoning and can be freely displayed in public places.</p>
+        <p class="mt-2"> Credit: Debbie Viess</p>
+        <div class="mt-6">
+          <div class="border border-gray-700 rounded overflow-hidden">
+            <iframe src="./Red%20poster%20Spanish_2.pdf" title="Póster Amanita phalloides (español)" class="w-full h-96"></iframe>
+          </div>
+          <a href="./Red%20poster%20Spanish_2.pdf" download class="inline-block mt-3 px-4 py-2 bg-white text-gray-900 rounded shadow">Descargar póster (PDF, español)</a>
+        </div>
+      </section>
+    </main>
+
+    
+    <!-- Footer -->
+    <div id="footer-placeholder"></div>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        fetch("/Components/footer.html")
+          .then(response => response.text())
+          .then(data => {
+            document.getElementById("footer-placeholder").innerHTML = data;
+          })
+          .catch(error => console.error("Error loading footer:", error));
+      });
+    </script>
+  </body>
+</html>
